@@ -19,8 +19,11 @@
 
 <body>
 
-//panggil komponen
+
   @include('components.navbar')
+
+  {{--  buat nyoba logout  --}}
+    {{--  @include('layouts.navigation')    --}}
 
     @yield('content')
 

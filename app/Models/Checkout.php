@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Checkout extends Model
 {
@@ -15,4 +16,21 @@ class Checkout extends Model
         
         
     ];
+
+
+    public function setExpiredAttribute($value)
+    {
+        $this->attributes['expired'] = date('Y-m-t', strtotime($value));
+    }
+
+// untuk relasi untuk ambil2 datanya
+    public function Camp(): BelongsTo
+    {
+        return $this->belongsTo(Camp::class);
+    }
+
+    public function User(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }
