@@ -57,6 +57,6 @@ class UserController extends Controller
             Mail::to($user->email)->send(new AfterRegister($user));
         }
         Auth::login($user, true);
-        return redirect(route('wellcome'));
+        return redirect(route('welcome'));
      }
 }
